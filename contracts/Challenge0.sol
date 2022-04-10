@@ -3,20 +3,31 @@
 pragma solidity >= 0.7.0 <0.9.0;
 
 contract Challenge0 {
-address private owner;
-uint256 userbalance;
-uint256 withdrawamount;
+address public owner;
+uint256 userBalance;
+uint256 withdrawAmount;
 bool public canWithdraw= false;
 
-    constructor() public{}
+    constructor (){
+     function withdrawAmount(uint256 amount) onlyOwner payable public {
+         require(msg.value == amount);
+         require(amount <= getBalance());
+         msg.sender.transfer(amount);
+  }
+    }
 
-    function setWithdrawAmount() {}
+    function setUserBalance()external view {
 
-    function setUserBalance() {}
+    }
     
-function getUserBalance()external view returns (uint){
+function getUserBalance()public returns (uint256){
     return address(this).balance;
 
-    function checkWithdraw() {}
+    }
+    // function checkWithdraw() external view {
+
+
+    }
 
 }
+ 
